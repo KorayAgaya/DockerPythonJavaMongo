@@ -1,0 +1,13 @@
+[Unit]
+Description=Manage Java service
+
+[Service]
+Environment="SCRIPT_ARGS=%I"
+ExecStart=/usr/bin/java -jar -XX:TieredStopAtLevel=1 -noverify -Xms256m -Xmx256M -Dspring.profiles.active=prod /home/yys/build/docker-build/bin/yys/authms.jar
+User=root
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
