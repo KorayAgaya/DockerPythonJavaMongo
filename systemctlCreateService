@@ -3,7 +3,7 @@ Description=Manage Java service
 
 [Service]
 Environment="SCRIPT_ARGS=%I"
-ExecStart=/usr/bin/java -jar -XX:TieredStopAtLevel=1 -noverify -Xms256m -Xmx256M -Dspring.profiles.active=prod /home/yys/build/docker-build/bin/yys/authms.jar
+ExecStart=/usr/bin/java -jar -XX:TieredStopAtLevel=1 -noverify -Xms256m -Xmx256M -Dspring.profiles.active=prod /home/yys/build/docker-build/bin/yys/auth.jar
 User=root
 Type=simple
 Restart=on-failure
