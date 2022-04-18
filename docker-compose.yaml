@@ -1,0 +1,51 @@
+version: "3"
+services:
+ myssrv:
+  image: hvssrv:3.0
+  hostname: hvssrv
+  networks:
+    mys-net:
+      ipv4_address: 10.5.0.10
+#  container_name: hvs-deployment
+  privileged: true
+  entrypoint: ["/sbin/init"]
+  volumes:
+   - /data/dbSrv:/var/lib/mongodb
+   - /home/hvs/build/docker-build:/home/hvs/build/docker-build
+  ports:
+   - "90:30/tcp"
+  deploy:
+#      replicas: 5
+      resources:
+        limits:
+          cpus: '4'
+          memory: '8G'
+
+ mysmsg:
+  image: hvsmsg:3.0
+  hostname: hvsmsg
+  networks:
+    mys-net:
+      ipv4_address: 10.5.0.20
+#  container_name: hvs-deployment
+  privileged: true
+  entrypoint: ["/sbin/init"]
+  volumes:
+   - /data/dbMsg:/var/lib/mongodb
+   - /home/hvs/build/docker-build:/home/hvs/build/docker-build
+  ports:
+   - "90:30/tcp"
+
+  deploy:
+#      replicas: 5
+      resources:
+        limits:
+          cpus: '4'
+          memory: '8G'
+networks:
+  mys-net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
