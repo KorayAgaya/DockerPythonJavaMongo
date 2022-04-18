@@ -20,7 +20,7 @@ services:
         limits:
           cpus: '4'
           memory: '8G'
-
+          
  mysmsg:
   image: hvsmsg:3.0
   hostname: hvsmsg
@@ -35,7 +35,6 @@ services:
    - /home/hvs/build/docker-build:/home/hvs/build/docker-build
   ports:
    - "90:30/tcp"
-
   deploy:
 #      replicas: 5
       resources:
