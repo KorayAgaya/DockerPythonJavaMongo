@@ -27,7 +27,23 @@ Command 2 : docker networks ls
 
 60d504f378fa   vmnet     macvlan   local
 
-Insert belleow command into /etc/rc.local ( Host run commnads starting  )
+Commands 3 : Insert belleow command into /etc/sysctl.conf last line
+
+net.ipv4.conf.all.arp_ignore = 1
+
+net.ipv4.conf.all.arp_filter = 1
+
+#net.ipv4.ip_forward = 1
+
+#net.ipv4.conf.all.arp_announce = 2
+
+Commands 4 : Insert belleow command into /etc/iproute2/rt_tables last line
+
+200 eno1t
+201 enp9s0t
+202 macvlan0t
+
+Commnads 5 : Insert belleow command into /etc/rc.local ( Host run commnads starting  )
 
 ip rule add from 10.X.X.73 table eno1t
 ip route add 10.X.X.0/24 dev eno1 table eno1t
@@ -45,4 +61,4 @@ ip rule add from 10.X.X.100 table macvlan0t
 ip route add 10.X.X.0/24 dev macvlan0 table macvlan0t
 ip route add default via 10.X.X.1 dev macvlan0 table macvlan0t
 
-Command 3 : docker run -it --name xxx-msg --network vmnet --ip=10.X.X.72 -d --privileged=true xxxnet:1.0 "/sbin/init"
+Command 6 : docker run -it --name xxx-msg --network vmnet --ip=10.X.X.72 -d --privileged=true xxxnet:1.0 "/sbin/init"
