@@ -33,10 +33,6 @@ net.ipv4.conf.all.arp_ignore = 1
 
 net.ipv4.conf.all.arp_filter = 1
 
-#net.ipv4.ip_forward = 1
-
-#net.ipv4.conf.all.arp_announce = 2
-
 Commands 4 : Insert belleow command into /etc/iproute2/rt_tables last line
 
 200 eno1t
