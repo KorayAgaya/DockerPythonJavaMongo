@@ -19,6 +19,8 @@ Link 1 : https://blog.oddbit.com/post/2014-08-11-four-ways-to-connect-a-docker/
 
 Link 2 : https://3vium.com/blog/how-to-set-up-a-linux-server-with-few-interfaces-in-the-same-ipv4-network-subnet/
 
+Link 3 : https://micropyramid.com/blog/assign-public-ip-address-to-docker-container-without-port-binding/
+
 Host Machine
 
 Command 1 : docker network create --driver macvlan --subnet 10.X.X.0/24 --gateway 10.X.X.1 -o parent=enp9s0  vmnet
@@ -44,6 +46,8 @@ Commnads 5 : Insert belleow command into /etc/rc.local ( Host run commnads start
 ip rule add from 10.X.X.73 table eno1t
 ip route add 10.X.X.0/24 dev eno1 table eno1t
 ip route add default via 10.X.X.1 dev eno1 table eno1t
+
+
 
 ip rule add from 10.X.X.74 table enp9s0t
 ip route add 10.X.X.0/24 dev enp9s0 table enp9s0t
